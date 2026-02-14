@@ -1,2 +1,3 @@
 @echo off
-node D:\openclaw\dist\index.js %*
+set "ROOT=%~dp0"
+node "%ROOT%dist\index.js" %*

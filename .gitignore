@@ -84,3 +84,9 @@ USER.md
 !.agent/workflows/
 local/
 package-lock.json
+
+
+
+# files sdnri
+bash.cmd
+openclaw.cmd
