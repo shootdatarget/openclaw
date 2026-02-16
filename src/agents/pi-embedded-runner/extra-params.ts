@@ -74,11 +74,17 @@ function createStreamFnWithExtraParams(
   }
 
   const streamParams: CacheRetentionStreamOptions = {};
+  const envTemp = parseFloat(process.env.OPENCLAW_TEMPERATURE ?? "");
+  const envMaxTokens = parseInt(process.env.OPENCLAW_MAX_TOKENS ?? "");
   if (typeof extraParams.temperature === "number") {
     streamParams.temperature = extraParams.temperature;
+  } else if (!isNaN(envTemp)) {
+    streamParams.temperature = envTemp;
   }
   if (typeof extraParams.maxTokens === "number") {
     streamParams.maxTokens = extraParams.maxTokens;
+  } else if (!isNaN(envMaxTokens)) {
+    streamParams.maxTokens = envMaxTokens;
   }
   const cacheRetention = resolveCacheRetention(extraParams, provider);
   if (cacheRetention) {
